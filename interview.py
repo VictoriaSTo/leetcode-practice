@@ -14,16 +14,9 @@ def balancedOrNot(expressions, maxReplacements):
             if expression[j] == '<':
                 unmatchedCount+=1
             elif expression[j] == '>':
-                if unmatchedCount == 0:
-                    if replacement > 0:
-                        replacement -=1
-                    else:
-                        balanced = False
-                        break
-                else:
-                    unmatchedCount -=1
+                unmatchedCount -=1
             
-        if unmatchedCount > 0 and replacement < unmatchedCount:
+        if unmatchedCount != 0 and replacement < abs(unmatchedCount):
             balanced = False
             
         result.append(balanced)
